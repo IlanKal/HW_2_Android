@@ -4,6 +4,7 @@
     android:id="@+id/leaderboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/navy"
     android:orientation="vertical"
     tools:context=".LeaderboardActivity">
 
@@ -14,15 +15,15 @@
         android:layout_alignParentRight="true"
         android:layout_marginVertical="10dp">
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/menu_BTN"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Menu"
+            android:fontFamily="monospace"
+            android:text="Back to menu"
             app:backgroundTint="@color/purple"
-            android:layout_marginHorizontal="80dp"/>
+            android:layout_marginHorizontal="120dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -48,7 +49,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="20dp"
-            android:background="@color/white"
+            android:background="@color/navy"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

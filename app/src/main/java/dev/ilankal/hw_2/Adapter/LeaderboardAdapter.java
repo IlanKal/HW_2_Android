@@ -46,8 +46,13 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         holder.item_score.setText(String.valueOf(record.getScore()));
 
         //set the background color
+        if(position % 2 == 0){
         int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.purple);
         holder.item_container.setBackgroundColor(color);
+        } else {
+            int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.bright_purple);
+            holder.item_container.setBackgroundColor(color);
+        }
 
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {

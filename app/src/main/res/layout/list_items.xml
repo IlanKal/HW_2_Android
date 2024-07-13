@@ -11,6 +11,7 @@
         android:id="@+id/item_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_weight="1"
         android:textSize="15sp"
         />
@@ -19,6 +20,7 @@
         android:id="@+id/item_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_weight="1"
         android:textSize="15sp"
         />
@@ -27,6 +29,7 @@
         android:id="@+id/item_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_weight="1"
         android:textSize="15sp"
         android:gravity="end"

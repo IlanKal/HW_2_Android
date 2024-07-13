@@ -7,10 +7,16 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class RecordList {
-    private final String name = "Record";
+
+    private final String name = "Records";
     private ArrayList<Record> records = new ArrayList<>();
 
     public RecordList() {
+
+    }
+
+    public void setRecords(ArrayList<Record> records) {
+        this.records = records;
     }
 
     public String getName() {
@@ -21,36 +27,34 @@ public class RecordList {
         return records;
     }
 
-    public void setRecords(ArrayList<Record> records) {
-        this.records = records;
+    public ArrayList<Record> getRecordsTop10() {
+        // Sort records by default comparator (if needed)
+        sortRecords(new RecordPointsComparator());
+
+        // Get the top 10 records or fewer if less than 10 records exist
+        int limit = Math.min(records.size(), 10);
+        ArrayList<Record> recordsTop10 = new ArrayList<>(records.subList(0, limit));
+        return recordsTop10;
     }
 
+    // Method to add a record to the list
     public void addRecord(Record record) {
         records.add(record);
     }
 
-    public ArrayList<Record> getLast10Records() {
-        // Sort the records based on date and time
-        records.sort(new Comparator<Record>() {
-            @Override
-            public int compare(Record r1, Record r2) {
-                int dateCompare = r1.getDate().compareTo(r2.getDate());
-                if (dateCompare != 0) {
-                    return dateCompare;
-                } else {
-                    return r1.getTime().compareTo(r2.getTime());
-                }
-            }
-        });
-
-        // Get the last 10 records (or fewer if there aren't 10 records)
-        int size = records.size();
-        int startIndex = size > 10 ? size - 10 : 0;
-
-        return new ArrayList<>(records.subList(startIndex, size));
+    // Method to sort records based on a comparator
+    public void sortRecords(Comparator<Record> comparator) {
+        Collections.sort(records, comparator);
     }
 
-    @NonNull
+    // comparator to sort records by a specific field (e.g., record points)
+    public static class RecordPointsComparator implements Comparator<Record> {
+        @Override
+        public int compare(Record r1, Record r2) {
+            return Integer.compare(r2.getScore(), r1.getScore());
+        }
+    }
+
     @Override
     public String toString() {
         return "RecordList{" +

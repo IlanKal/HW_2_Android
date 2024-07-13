@@ -63,10 +63,10 @@ public class StartActivity extends AppCompatActivity {
         main_FAB_buttons.setOnClickListener(view -> startMainActivity("buttons"));
         main_FAB_sensors.setOnClickListener(view -> startMainActivity("sensors"));
         radio_fast_mode.setOnClickListener(view -> isFastMode = radio_fast_mode.isChecked());
-//        main_FAB_leaderboard.setOnClickListener(view -> {
-//            Intent intent = new Intent(StartActivity.this, LeaderboardActivity.class);
-//            startActivity(intent);
-//        });
+        main_FAB_leaderboard.setOnClickListener(view -> {
+            Intent intent = new Intent(StartActivity.this, LeaderboardActivity.class);
+            startActivity(intent);
+        });
     }
 
 

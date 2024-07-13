@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             stopTimer();
             Log.d("lostGame", "You lost the game!!!");
             updateLeaderboard();
-//            moveToRecordActivity();
+            moveToStartActivity();
             return;
         } else {
             //update matrix
@@ -309,13 +309,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void moveToRecordActivity() {
-//        //move to game activity
-//        Intent intent = new Intent(this, LeaderboardActivity.class);
-//        intent.putExtra(LeaderboardActivity.KEY_LAST_SCORE, String.valueOf(gameController.getScoreBoard()));
-//        startActivity(intent);
-//        finish();
-//    }
+    private void moveToStartActivity() {
+        //move to start activity
+        Intent intent = new Intent(this, StartActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     private void updateLeaderboard(){
         Gson gson = new Gson();

@@ -1,20 +1,13 @@
 package dev.ilankal.hw_2;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.widget.FrameLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.button.MaterialButton;
-
 import dev.ilankal.hw_2.Fragments.ListFragment;
-//import dev.IlanKal.hw1_mobile_dev.Fragments.MapFragment;
-
-import dev.ilankal.hw_2.Fragments.ListFragment;
+import dev.ilankal.hw_2.Fragments.MapFragment;
 import dev.ilankal.hw_2.interfaces.Callback_ListItemClicked;
 
 public class LeaderboardActivity extends AppCompatActivity implements Callback_ListItemClicked {
@@ -22,7 +15,7 @@ public class LeaderboardActivity extends AppCompatActivity implements Callback_L
     private FrameLayout leaderboard_FRAME_list;
     private FrameLayout leaderboard_FRAME_map;
     private ListFragment listFragment;
-//    private MapFragment mapFragment;
+    private MapFragment mapFragment;
     private MaterialButton menu_BTN;
 
 
@@ -47,19 +40,18 @@ public class LeaderboardActivity extends AppCompatActivity implements Callback_L
 
         // Show fragments
         getSupportFragmentManager().beginTransaction().add(R.id.leaderboard_FRAME_list, listFragment).commit();
-//        mapFragment = new MapFragment();
-//        getSupportFragmentManager().beginTransaction().add(R.id.leaderboard_FRAME_map, mapFragment).commit();
+        mapFragment = new MapFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.leaderboard_FRAME_map, mapFragment).commit();
     }
 
 
 
     public void listItemClicked(double lat, double lon) {
-//        if (mapFragment != null) {
-////            mapFragment.zoom(lat, lon);
-//            Log.d("cords",  lat + " " + lon);
-//        }
+        if (mapFragment != null) {
+            mapFragment.zoom(lat, lon);
+            Log.d("cords",  lat + " " + lon);
+        }
 
-        Log.d("cords",  lat + " " + lon);
     }
 
 

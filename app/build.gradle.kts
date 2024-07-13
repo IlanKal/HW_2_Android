@@ -41,6 +41,9 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    // google maps
+    implementation("com.google.android.gms:play-services-maps:18.0.1")
+
     // Gson
     implementation (libs.gson)
 

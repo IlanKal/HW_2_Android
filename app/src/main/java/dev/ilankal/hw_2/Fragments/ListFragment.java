@@ -21,8 +21,8 @@ import dev.ilankal.hw_2.interfaces.Callback_ListItemClicked;
 public class ListFragment extends Fragment {
 
     private RecyclerView leaderboardRecyclerView;
+    private final String LEADERBOARD_SPM = "recordList";
     private RecordList recordList;
-    private final String KEY_RECORDS_SPM = "recordList";
     private Callback_ListItemClicked callbackListItemClicked;
 
     public ListFragment() {
@@ -45,7 +45,7 @@ public class ListFragment extends Fragment {
     }
 
     private void initViews() {
-        LeaderboardAdapter recordAdapter = new LeaderboardAdapter(recordList.getRecordsTop10(), (lat, lon) -> {
+        LeaderboardAdapter recordAdapter = new LeaderboardAdapter(recordList.getTop10Records(), (lat, lon) -> {
             if (callbackListItemClicked != null) {
                 callbackListItemClicked.listItemClicked(lat, lon);
             }
@@ -65,7 +65,7 @@ public class ListFragment extends Fragment {
         // Getting data
         String recordListAsJson = SharePreferencesManager
                 .getInstance()
-                .getString(KEY_RECORDS_SPM, "");
+                .pullString(LEADERBOARD_SPM, "");
         recordList = gson.fromJson(recordListAsJson, RecordList.class);
         if (recordList == null) {
             recordList = new RecordList();

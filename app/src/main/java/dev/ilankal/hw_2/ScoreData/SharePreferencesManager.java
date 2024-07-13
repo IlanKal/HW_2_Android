@@ -5,16 +5,12 @@ import android.content.SharedPreferences;
 
 public class SharePreferencesManager {
     private static volatile SharePreferencesManager instance = null;
-    private SharedPreferences sharedPref;
-    private static final String SP_FILE = "SP_FILE";
+    private SharedPreferences sharedPreferences;
+    private static final String DATA_FILE = "DATA_FILE";
 
 
     private SharePreferencesManager(Context context) {
-        sharedPref = context.getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
-    }
-
-    public static SharePreferencesManager getInstance() {
-        return instance;
+        sharedPreferences = context.getSharedPreferences(DATA_FILE, Context.MODE_PRIVATE);
     }
 
     public static SharePreferencesManager init(Context context) {
@@ -27,15 +23,17 @@ public class SharePreferencesManager {
         }
         return getInstance();
     }
-
-    public void putString(String key, String value) {
-
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(key, value);
-        editor.apply();
+    public static SharePreferencesManager getInstance() {
+        return instance;
     }
 
-    public String getString(String key, String defValue) {
-        return sharedPref.getString(key, defValue);
+    public String pullString(String key, String value) {
+        return sharedPreferences.getString(key, value);
+    }
+
+    public void putString(String key, String value) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
     }
 }

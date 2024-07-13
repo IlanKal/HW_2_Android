@@ -1,6 +1,6 @@
 package dev.ilankal.hw_2.Adapter;
 
-import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +17,8 @@ import dev.ilankal.hw_2.R;
 import dev.ilankal.hw_2.ScoreData.Record;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>{
-
-    private final ArrayList<Record> records_list;
     private OnItemClickListener onItemClickListener;
+    private final ArrayList<Record> records_list;
 
     public interface OnItemClickListener {
         void onItemClick(double lat, double lon);
@@ -39,6 +38,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull LeaderboardViewHolder holder, int position) {
+        int color;
         Record record = getItem(position);
 
         holder.item_date.setText(record.getDate());
@@ -47,10 +47,10 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
         //set the background color
         if(position % 2 == 0){
-        int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.purple);
-        holder.item_container.setBackgroundColor(color);
+            color = ContextCompat.getColor(holder.itemView.getContext(), R.color.purple);
+            holder.item_container.setBackgroundColor(color);
         } else {
-            int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.bright_purple);
+            color = ContextCompat.getColor(holder.itemView.getContext(), R.color.bright_purple);
             holder.item_container.setBackgroundColor(color);
         }
 
@@ -60,14 +60,12 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             }
         });
     }
-
+    private Record getItem(int position) {
+        return records_list.get(position);
+    }
     @Override
     public int getItemCount() {
         return records_list.size();
-    }
-
-    private Record getItem(int position) {
-        return records_list.get(position);
     }
 
     public static class LeaderboardViewHolder extends RecyclerView.ViewHolder {

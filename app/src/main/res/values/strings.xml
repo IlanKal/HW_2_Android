@@ -7,6 +7,6 @@
     </style>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="my_map_API_key">my api key</string>
+    <string name="my_map_API_key">my API key </string>
 
 </resources>

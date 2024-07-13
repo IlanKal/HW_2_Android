@@ -31,7 +31,7 @@ import dev.ilankal.hw_2.ScoreData.SharePreferencesManager;
 import dev.ilankal.hw_2.interfaces.MoveCallback;
 
 public class MainActivity extends AppCompatActivity {
-    private final String KEY_RECORDS_SPM = "recordList";
+    private final String LEADERBOARD_SPM = "recordList";
     private GPSLocationHelper GPSLocationHelper;
     private MoveDetector moveDetector;
     public SoundPlayer soundPlayer;
@@ -239,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
             stopTimer();
             Log.d("lostGame", "You lost the game!!!");
             updateLeaderboard();
+            // move back to manu after lose
             moveToStartActivity();
             return;
         } else {
@@ -319,19 +320,22 @@ public class MainActivity extends AppCompatActivity {
     private void updateLeaderboard(){
         Gson gson = new Gson();
         //getting data
-        String recordListAsJson = SharePreferencesManager.getInstance().getString(KEY_RECORDS_SPM, "");
+        String recordListAsJson = SharePreferencesManager.getInstance().pullString(LEADERBOARD_SPM, "");
         RecordList recordList = gson.fromJson(recordListAsJson, RecordList.class);
+
         if (recordList == null){
             recordList = new RecordList();
         }
+
         Record newRecord = new Record(gameController.getScoreBoard(), GPSLocationHelper.getLat(), GPSLocationHelper.getLon());
         recordList.addRecord(newRecord);
-        Log.d("RecordList", recordList.toString());
+
         String newRecordListAsJson = gson.toJson(recordList);
-        //saving data
+
+        //save data
         SharePreferencesManager
                 .getInstance()
-                .putString(KEY_RECORDS_SPM, newRecordListAsJson);
+                .putString(LEADERBOARD_SPM, newRecordListAsJson);
     }
 
     private void toastAndVibrate(String text) {

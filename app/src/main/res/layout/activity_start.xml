@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:background="@drawable/main_background"
+    android:layout_height="match_parent"
+    tools:context=".StartActivity"
+    tools:ignore="ExtraText">
+
+    <!-- rocket icon -->
+    <ImageView
+        android:id="@+id/main_IMG_rocket_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/ic_luncher_rocket"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        />
+
+    <!-- Text on screen -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/main_TXT_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Welcome To Space Game"
+        android:layout_centerInParent="true"
+        android:fontFamily="monospace"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_below="@id/main_IMG_rocket_icon"
+        android:layout_marginTop="20dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/main_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_TXT_text"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <!-- First Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_FAB_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/white"
+            android:text="buttons mode"
+            android:textColor="@color/black"/>
+
+        <!-- Second Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/main_FAB_sensors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="16dp"
+            android:text="sensors mode"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/radio_fast_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="fast mode"
+        android:fontFamily="monospace"
+        android:layout_below="@id/main_buttons"
+        android:textColor="@color/white"/>
+
+    <!-- Leaderboard Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/main_FAB_leaderboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:backgroundTint="@color/white"
+        android:layout_below="@id/radio_fast_mode"
+        android:text="leaderboard👑"
+        android:fontFamily="monospace"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>

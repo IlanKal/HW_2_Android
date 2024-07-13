@@ -16,7 +16,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,8 +29,6 @@ import dev.ilankal.hw_2.ScoreData.Record;
 import dev.ilankal.hw_2.ScoreData.RecordList;
 import dev.ilankal.hw_2.ScoreData.SharePreferencesManager;
 import dev.ilankal.hw_2.interfaces.MoveCallback;
-
-
 
 public class MainActivity extends AppCompatActivity {
     private final String KEY_RECORDS_SPM = "recordList";
@@ -240,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
         if (gameController.lostGame()) {
             stopTimer();
             Log.d("lostGame", "You lost the game!!!");
-//            updateLeaderboard();
+            updateLeaderboard();
 //            moveToRecordActivity();
             return;
         } else {
@@ -319,25 +317,23 @@ public class MainActivity extends AppCompatActivity {
 //        finish();
 //    }
 
-//    private void updateLeaderboard(){
-//        Gson gson = new Gson();
-//        //getting data
-//        String recordListAsJson = SharePreferencesManager
-//                .getInstance()
-//                .getString(KEY_RECORDS_SPM, "");
-//        RecordList recordList = gson.fromJson(recordListAsJson, RecordList.class);
-//        if (recordList == null){
-//            recordList = new RecordList();
-//        }
-//        Record newRecord = new Record(gameController.getScoreBoard(), GPSLocationHelper.getLat(), GPSLocationHelper.getLon());
-//        recordList.addRecord(newRecord);
-//        Log.d("RecordList", recordList.toString());
-//        String newRecordListAsJson = gson.toJson(recordList);
-//        //saving data
-//        SharePreferencesManager
-//                .getInstance()
-//                .putString(KEY_RECORDS_SPM, newRecordListAsJson);
-//    }
+    private void updateLeaderboard(){
+        Gson gson = new Gson();
+        //getting data
+        String recordListAsJson = SharePreferencesManager.getInstance().getString(KEY_RECORDS_SPM, "");
+        RecordList recordList = gson.fromJson(recordListAsJson, RecordList.class);
+        if (recordList == null){
+            recordList = new RecordList();
+        }
+        Record newRecord = new Record(gameController.getScoreBoard(), GPSLocationHelper.getLat(), GPSLocationHelper.getLon());
+        recordList.addRecord(newRecord);
+        Log.d("RecordList", recordList.toString());
+        String newRecordListAsJson = gson.toJson(recordList);
+        //saving data
+        SharePreferencesManager
+                .getInstance()
+                .putString(KEY_RECORDS_SPM, newRecordListAsJson);
+    }
 
     private void toastAndVibrate(String text) {
         vibrate();

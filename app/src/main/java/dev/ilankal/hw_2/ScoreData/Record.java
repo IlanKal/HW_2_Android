@@ -1,6 +1,5 @@
 package dev.ilankal.hw_2.ScoreData;
 
-
 import androidx.annotation.NonNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,11 +13,11 @@ public class Record {
 
 
     public Record(int score, double lat, double lon) {
-        setDate(date);
-        setTime(time);
         setScore(score);
         setLat(lat);
         setLon(lon);
+        setDate();
+        setTime();
     }
 
     public String getDate() {
@@ -41,12 +40,16 @@ public class Record {
         return lon;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    private void setDate() {
+        LocalDate dateNow = LocalDate.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.date = dateNow.format(dateFormatter);
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    private void setTime() {
+        LocalTime timeNow = LocalTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        this.time = timeNow.format(timeFormatter);
     }
 
     public void setScore(int score) {

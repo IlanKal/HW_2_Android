@@ -22,4 +22,4 @@ a lives system, and endless gameplay.
 - Sensor Mode: Control the rocket by tilting the device.
 
 # Video Example
-Gameplay Video: Game preview.mp4
+Gameplay Video: [Game preview.mp4](https://github.com/IlanKal/HW_2_Android/blob/master/Game%20preview.mp4)

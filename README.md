@@ -4,7 +4,7 @@ This Android endless runner game puts players in control of a rocket navigating 
 avoiding obstacles and collecting coins. The game features real-time crash notifications,
 a lives system, and endless gameplay.
 
-#F eatures
+# Features
 
 - Five-Lane Road: Navigate a dynamically segmented road with five lanes.
 - Rocket Control: Tilt your device to move the rocket left or right.
